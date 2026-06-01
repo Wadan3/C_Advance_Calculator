@@ -53,7 +53,6 @@ int main() {
             printf("Exiting the calculator. Goodbye!\n");  
             break;  
         }  
-
         if (choice >= 1 && choice <= 6) {  
             if (choice == 6) {  
                 printf("Enter a number: ");  
