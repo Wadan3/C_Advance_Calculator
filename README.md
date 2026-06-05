@@ -106,7 +106,7 @@ calculator.exe
 ---
 ## 📷 Screenshot
 
-![C Advanced Calculator](screenshots/calculator-demo.png)
+![C Advanced Calculator](screenshots/screenshort.png)
 ## 🎯 Learning Objectives
 
 This project demonstrates:
