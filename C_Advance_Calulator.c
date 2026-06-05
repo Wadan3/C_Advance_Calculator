@@ -1,93 +1,117 @@
-#include <stdio.h>  
-#include <math.h>  
+#include <stdio.h>
+#include <math.h>
 
-void add(double a, double b) {  
-    printf("Result: %.2f\n", a + b);  
-}  
+void showMenu() {
+    printf("\n====================================\n");
+    printf("        Advanced C Calculator        \n");
+    printf("====================================\n");
+    printf("1. Addition\n");
+    printf("2. Subtraction\n");
+    printf("3. Multiplication\n");
+    printf("4. Division\n");
+    printf("5. Power\n");
+    printf("6. Square Root\n");
+    printf("7. Modulus\n");
+    printf("8. Percentage\n");
+    printf("9. Exit\n");
+    printf("------------------------------------\n");
+    printf("Choose an operation: ");
+}
 
-void subtract(double a, double b) {  
-    printf("Result: %.2f\n", a - b);  
-}  
+double getNumber(const char *message) {
+    double number;
+    printf("%s", message);
 
-void multiply(double a, double b) {  
-    printf("Result: %.2f\n", a * b);  
-}  
+    while (scanf("%lf", &number) != 1) {
+        printf("Invalid input. Please enter a number: ");
+        while (getchar() != '\n');
+    }
 
-void divide(double a, double b) {  
-    if (b != 0) {  
-        printf("Result: %.2f\n", a / b);  
-    } else {  
-        printf("Error: Division by zero is not allowed.\n");  
-    }  
-}  
+    return number;
+}
 
-void power(double base, double exponent) {  
-    printf("Result: %.2f\n", pow(base, exponent));  
-}  
+int main() {
+    int choice;
+    double num1, num2;
 
-void squareRoot(double a) {  
-    if (a >= 0) {  
-        printf("Result: %.2f\n", sqrt(a));  
-    } else {  
-        printf("Error: Cannot take the square root of a negative number.\n");  
-    }  
-}  
+    while (1) {
+        showMenu();
 
-int main() {  
-    int choice;  
-    double num1, num2;  
+        if (scanf("%d", &choice) != 1) {
+            printf("Invalid input. Please enter a valid option.\n");
+            while (getchar() != '\n');
+            continue;
+        }
 
-    while (1) {  
-        printf("\n--- Advanced Calculator ---\n");  
-        printf("1. Addition\n");  
-        printf("2. Subtraction\n");  
-        printf("3. Multiplication\n");  
-        printf("4. Division\n");  
-        printf("5. Power\n");  
-        printf("6. Square Root\n");  
-        printf("7. Exit\n");  
-        printf("Choose an operation (1-7): ");  
-        scanf("%d", &choice);  
+        if (choice == 9) {
+            printf("Thank you for using Advanced C Calculator. Goodbye!\n");
+            break;
+        }
 
-        if (choice == 7) {  
-            printf("Exiting the calculator. Goodbye!\n");  
-            break;  
-        }  
-        
-        if (choice >= 1 && choice <= 6) {  
-            if (choice == 6) {  
-                printf("Enter a number: ");  
-                scanf("%lf", &num1);  
-                squareRoot(num1);  
-            } else {  
-                printf("Enter first number: ");  
-                scanf("%lf", &num1);  
-                printf("Enter second number: ");  
-                scanf("%lf", &num2);  
-                
-                switch (choice) {  
-                    case 1:  
-                        add(num1, num2);  
-                        break;  
-                    case 2:  
-                        subtract(num1, num2);  
-                        break;  
-                    case 3:  
-                        multiply(num1, num2);  
-                        break;  
-                    case 4:  
-                        divide(num1, num2);  
-                        break;  
-                    case 5:  
-                        power(num1, num2);  
-                        break;  
-                    default:  
-                        printf("Invalid choice.\n");  
-                }  
-            }  
-        } else {  
-            printf("Invalid choice. Please try again.\n");  
-        }  
-    }  
-    return 0;  
+        switch (choice) {
+            case 1:
+                num1 = getNumber("Enter first number: ");
+                num2 = getNumber("Enter second number: ");
+                printf("Result: %.2f\n", num1 + num2);
+                break;
+
+            case 2:
+                num1 = getNumber("Enter first number: ");
+                num2 = getNumber("Enter second number: ");
+                printf("Result: %.2f\n", num1 - num2);
+                break;
+
+            case 3:
+                num1 = getNumber("Enter first number: ");
+                num2 = getNumber("Enter second number: ");
+                printf("Result: %.2f\n", num1 * num2);
+                break;
+
+            case 4:
+                num1 = getNumber("Enter first number: ");
+                num2 = getNumber("Enter second number: ");
+                if (num2 == 0) {
+                    printf("Error: Division by zero is not allowed.\n");
+                } else {
+                    printf("Result: %.2f\n", num1 / num2);
+                }
+                break;
+
+            case 5:
+                num1 = getNumber("Enter base: ");
+                num2 = getNumber("Enter exponent: ");
+                printf("Result: %.2f\n", pow(num1, num2));
+                break;
+
+            case 6:
+                num1 = getNumber("Enter a number: ");
+                if (num1 < 0) {
+                    printf("Error: Cannot calculate square root of a negative number.\n");
+                } else {
+                    printf("Result: %.2f\n", sqrt(num1));
+                }
+                break;
+
+            case 7:
+                num1 = getNumber("Enter first integer: ");
+                num2 = getNumber("Enter second integer: ");
+                if ((int)num2 == 0) {
+                    printf("Error: Modulus by zero is not allowed.\n");
+                } else {
+                    printf("Result: %d\n", (int)num1 % (int)num2);
+                }
+                break;
+
+            case 8:
+                num1 = getNumber("Enter value: ");
+                num2 = getNumber("Enter percentage: ");
+                printf("Result: %.2f\n", (num1 * num2) / 100);
+                break;
+
+            default:
+                printf("Invalid option. Please choose between 1 and 9.\n");
+        }
+    }
+
+    return 0;
 }
