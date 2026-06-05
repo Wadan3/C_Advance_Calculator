@@ -1,3 +1,4 @@
+![C Build](https://github.com/Wadan3/C_Advance_Calculator/actions/workflows/c-build.yml/badge.svg)
 # 🧮 C Advanced Calculator
 
 ![C](https://img.shields.io/badge/C-Language-blue)
