@@ -104,7 +104,9 @@ calculator.exe
 ```
 
 ---
+## 📷 Screenshot
 
+![C Advanced Calculator](screenshots/calculator-demo.png)
 ## 🎯 Learning Objectives
 
 This project demonstrates:
